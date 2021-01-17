@@ -13,6 +13,10 @@ export function useForm(init = {}) {
 
   form[validKey] = computed(() => {
     return Object.keys(form).filter(withoutValid).reduce((acc, k) => {
+      if (acc === false) {
+        return acc
+      }
+
       acc = form[k].valid
       return acc
     }, true)
